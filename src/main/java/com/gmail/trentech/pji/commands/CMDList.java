@@ -25,27 +25,27 @@ public class CMDList implements CommandExecutor {
 		help.setSyntax(" /inventory list\n /inv l");
 		help.save();
 	}
-	
+
 	@Override
 	public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
 		List<Text> list = new ArrayList<>();
 
 		list.add(Text.of(TextColors.GREEN, " - default"));
-		
-		for(String name : SQLSettings.getInventoryList()) {
+
+		for (String name : SQLSettings.getInventoryList()) {
 			list.add(Text.of(TextColors.GREEN, " - ", name));
 		}
-		
-		if(src instanceof Player) {
+
+		if (src instanceof Player) {
 			PaginationList.Builder pages = Main.getGame().getServiceManager().provide(PaginationService.class).get().builder();
-			
+
 			pages.title(Text.builder().color(TextColors.DARK_GREEN).append(Text.of(TextColors.GREEN, "Inventories")).build());
-			
+
 			pages.contents(list);
-			
+
 			pages.sendTo(src);
-		}else{
-			for(Text text : list) {
+		} else {
+			for (Text text : list) {
 				src.sendMessage(text);
 			}
 		}
