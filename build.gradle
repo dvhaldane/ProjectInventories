@@ -1,7 +1,7 @@
 plugins {
   id 'maven'
   id 'org.spongepowered.plugin' version '0.6'
-  id 'net.ellune.blossom' version '1.0.1'
+  id 'ninja.miserable.blossom' version '1.0.1'
 }
 
 sourceCompatibility = 1.8
